@@ -37,14 +37,24 @@ slides.forEach((_, index) => {
   });
 });
 
-rightArrow.addEventListener("click", () => {
-   currentIndex = (currentIndex + 1) % slides.length;
-   updateSlide();
+rightArrow.addEventListener("click", function () {
+  currentIndex = currentIndex + 1; 
+
+  if (currentIndex === slides.length) {
+    currentIndex = 0;
+}
+
+updateSlide();
 });
 
-leftArrow.addEventListener("click", () => {
-   currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-   updateSlide();
+leftArrow.addEventListener("click", function () {
+  currentIndex = currentIndex - 1; 
+
+  if (currentIndex < 0) {
+    currentIndex = slides.length - 1;
+  }
+
+updateSlide();
 });
 
 function updateSlide() {
